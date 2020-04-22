@@ -1,5 +1,5 @@
 #### The project:
-A credit card fraud detection kaggle dataset [here](https://www.kaggle.com/mlg-ulb/creditcardfraud). The dataset is without a dictionary and the majority of the features were obscured (maybe a result of a PCA dimensionality reduction to protect users identities and sensitive features). It expands 31 columns and over 280,000 rows @ 144MB and the majority of the features are continuous. There aren't any outliers and the data appears to be normalized. There's a major issue with this dataset, the extremely imbalanced target/dependent variable 'Class'. The columns and descriptions in the dataset are as follows:
+A credit card fraud detection kaggle dataset [here](https://www.kaggle.com/mlg-ulb/creditcardfraud). The dataset is without a dictionary and the majority of the features were obscured for privacy concerns. It expands 31 columns and over 280,000 rows @ 144MB and the majority of the features are continuous. There aren't any outliers and the data appears to be normalized. There's a major issue with this dataset, the extremely imbalanced target/dependent variable 'Class'. The columns and descriptions in the dataset are as follows:
 
 ```python
        df.columns
@@ -26,6 +26,8 @@ Index(['Time', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10',
 
 #### Use of SMOTE
 Oversampling the minority dependent variable was the chosen path and subsequently led to an almost a quater of a million additional data points. The initial imbalance for a 227451 to 394 split! 
+
+<img src= under_oversampling.png width=300>
 
 ```python
 # instantiate a smote obj
@@ -102,6 +104,7 @@ gs_forest.best_params_
 
 <img src= model_results.jpg width=300>
 
+<img src= ROC.png width=300>
 
 ```python
 # Instantiate and fit a RandomForestClassifier
@@ -143,6 +146,7 @@ Confusion Matrix:
    macro avg       0.99      0.89      0.94     56962
 weighted avg       1.00      1.00      1.00     56962
 ```
+
 
 #### Future work:
 Would be nice to know what the hidden features are and test for multicollinearity and maybe ascertain if there's any correlation of fraudulent transaction detection during a specific time of day, month ... this could clearly be indentified by the metrics captured with each and every credit card transaction. 
